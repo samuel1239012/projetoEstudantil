@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/png" href="copa-etec/Imagem do WhatsApp de 2025-10-15 à(s) 22.12.39_ae84bdc0.jpg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etec de São Sebastião - CD Verdescola</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<style>
+  /* Estilos do body e elementos gerais que não são do cabeçalho, mantidos como você enviou */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #077ae6;
+    color: #222;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Estilos do cabeçalho removidos daqui, pois serão carregados do main.css */
+  .filtro-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  select {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: none;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .card {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+
+  .card h3 {
+    color: #2d7a5e;
+  }
+
+  .card p a {
+    color: #006b3c;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .card p a:hover {
+    text-decoration: underline;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Modal geral (oculto por padrão) */
+  .modal {
+    display: none;
+    /* só aparece quando clicado */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* fundo escuro */
+  }
+
+  /* Caixa branca dentro do modal */
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+  }
+
+  /* Botão de fechar (X) */
+  .fechar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+  }
+
+  /*---arruma a foto dentro do carrosel de tccs---*/
+  .modal-content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-fit: cover;
+    height: auto;
+    border-radius: 10px;
+    max-height: 400px;
+  }
+
+  .texto-abnt {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    text-align: justify;
+    text-indent: 1.25cm;
+    line-height: 1.5;
+  }
+
+  .carrossel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide {
+    display: none;
+    flex-direction: column;
+  }
+
+  .slide.ativo {
+    display: flex;
+  }
+
+  .carrossel button.anterior,
+  .carrossel button.proximo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+  }
+
+  .carrossel button.anterior {
+    left: 10px;
+  }
+
+  .carrossel button.proximo {
+    right: 10px;
+  }
+</style>
+
+<body class="page-fade">
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="copa-etec/Imagem do WhatsApp de 2025-10-15 à(s) 22.12.39_ae84bdc0.jpg" alt="Logo da etec">
+        <h1>Jornal Estudantil - Costa Sul de São Sebastião</h1>
+      </div>
+
+      <nav class="nav">
+      <button class="menu-toggle" id="btn-mobile" aria-label="Abrir Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="curiosidades.html">Curiosidades</a></li>
+        <li class="dropdown">
+          <a href="eventos.html">Eventos ▾</a>
+          <ul class="submenu">
+            <li><a href="#">Etec</a></li>
+            <li><a href="#">Sebastiana</a></li>
+            <li><a href="#">Walkir</a></li>
+          </ul>
+        </li>
+        <li><a href="destaque.html">Destaque</a></li>
+        <li><a href="apresentacao.html">TCCs</a></li>
+        <li><a href="professores.html">Professores</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img src="fotos/foto-noticias.jpg" alt="Foto da praia" class="hero-image">
+    <div class="hero-content">
+      <h1>Conclusão de Curso - TCCs </h1>
+      <h2>"<em>“O Resultado de muito estudo, dedicação e criatividade.”</em>"</h2>
+      <a href="professores.html" class="cta-button">Professores -> </a>
+    </div>
+  </section>
+
+  <main class="conteudo">
+    <section id="apresentacoes">
+      <h1>🎤 Apresentações de Projetos</h1>
+      <h2><em>"Explore os trabalhos inovadores dos nossos alunos!"</em></h2>
+
+      <!-- Nova seção de introdução com imagem e texto -->
+      <div class="apresentacao-intro">
+        <img src="fotos/formatura.png" alt="Alunos apresentando projetos">
+        <p>Aqui você encontra uma seleção especial de Trabalhos de Conclusão de Curso (TCCs) desenvolvidos pelos alunos
+          da ETEC centralizada no Verdescola. Cada trabalho mostra o talento, a dedicação e a criatividade dos nossos
+          estudantes ao enfrentar desafios reais e propor soluções inovadoras.
+        <p> os filtros por curso ou a barra de busca para encontrar os temas que mais te interessam. Aproveite para
+          explorar ideias, se inspirar em diferentes áreas do conhecimento e descobrir como nossos alunos estão fazendo
+          a diferença com seus projetos.</p>
+      </div>
+
+      <!-- Filtro -->
+      <div class="filtro-container">
+        <label for="filtro">Filtrar por curso:</label>
+        <select id="filtro">
+          <option value="todos">Todos</option>
+          <option value="agenciamento">Agenciamento de Viagens</option>
+          <option value="administracao">Administração</option>
+          <option value="meio-ambiente">Meio Ambiente</option>
+          <option value="marketing">Marketing</option>
+        </select>
+      </div>
+      <!-- Cards -->
+      <section class="container">
+        <div class="card agenciamento">
+          <img src="fotos/foto-do-3agv.jpg" alt="Capa">
+          <h3>Agenciamento de Viagens 2023</h3>
+          <p><a href="#" onclick="abrirModal('modal1')">Confira todos os TCCs apresentados pela Turma</a></p>
+        </div>
+        <div class="card administracao">
+          <img src="fotos/capa-do-3adi.jpg" alt="Capa">
+          <h3>Administração 2023</h3>
+          <p><a href="#" onclick="abrirModal('modal2')">Confira todos os TCCs apresentados pela Turma</a></p>
+        </div>
+        <div class="card agenciamento">
+          <img src="fotos/capa-do-2agv.jpg" alt="Capa">
+          <h3>Agenciamento de Viagens 2024</h3>
+          <p><a href="#" onclick="abrirModal('modal3')">Confira todos os TCCs apresentados pela Turma</a></p>
+        </div>
+        <div class="card administracao">
+          <img src="fotos/capa-do-2adi.jpg" alt="Capa">
+          <h3>Administração 2024</h3>
+          <p><a href="#" onclick="abrirModal('modal4')">Confira todos os TCCs apresentados pela Turma</a></p>
+        </div>
+        <div class="card meio-ambiente">
+          <img src="fotos/foto-do-3mai.jpg" alt="Capa">
+          <h3>Meio Ambiente 2025</h3>
+          <p><a href="#" onclick="abrirModal('modal5')">Confira todos os TCCs apresentados pela Turma</a></p>
+        </div>
+        <div class="card marketing">
+          <img src="fotos/capa-do1mkt.jpg" alt="Capa">
+          <h3>Marketing 2025</h3>
+          <p><a href="#" onclick="abrirModal('modal6')">Confira todos os TCCs apresentados pela Turma</a></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Script -->
+  <script>
+    const filtro = document.getElementById('filtro');
+    const cards = document.querySelectorAll('.card');
+    filtro.addEventListener('change', () => {
+      const valor = filtro.value.toLowerCase();
+      cards.forEach(card => {
+        const cardClasses = card.className.toLowerCase();
+        if (valor === 'todos') {
+          card.classList.remove('hidden');
+        } else {
+          if (cardClasses.includes(valor)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    /*---para entrar dentro da aba dos TCCs---*/
+    function abrirModal(id) {
+      document.getElementById(id).style.display = "block";
+      document.body.style.overflow = 'hidden'; // Impede o scroll do body
+    }
+    function fecharModal(id) {
+      document.getElementById(id).style.display = "none";
+      document.body.style.overflow = 'auto'; // Restaura o scroll do body
+    }
+  </script>
+  <!-- AGENCIAMENTO DE VIAGEM (MODAL)-->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal('modal1')">&times;</span>
+      <h2>Agenciamento de Viagens 2023</h2>
+      <div class="carrossel" id="carrossel1">
+        <div class="slide ativo">
+          <img src="fts-3agv/grupo-caio.jpg" alt="Grupo 1">
+          <article class="texto-abnt">
+            <p><strong>Grupo 1; ROTEIRO EXPERIMENTAL: CARACTERIZAÇÃO DA ROTA RUA DA PRAIA - CENTRO HISTÓRICO DE SÃO
+                SEBASTIÃO PARA A PRÁTICA DO TURISMO ACESSÍVEL</strong></p>
+            <p>oferta de atrativos e serviços que condicionam o Litoral Norte ser classificado como destino turístico é
+              bem diversa, sendo que a principal motivação é a procura pelo sol e pela praia. Porém, a oferta permite
+              planejar roteiros além das praias, deve-se considerar o potencial da Mata Atlântica e do Centro Histórico.
+              Tal aproveitamento permite que o turismo seja uma atividade econômica continua, compete aos profissionais
+              buscarem alternativas para tornar o turismo uma atividade econômica que ocorra com frequência e de forma
+              atraente. Nesse contexto que envolve oferta de atrativos e o perfil de demanda, o trabalho de pesquisa
+              direcionou a possibilidade de tornar São Sebastião um destino de Turismo Acessível. Pode-se considerar que
+              há recurso público para ser investido em estruturação de destinos. A referência para o direcionamento da
+              pesquisa foi o Programa Turismo Acessível, que é constituído por um conjunto de ações para promover a
+              inclusão social e o acesso de pessoas com deficiência ou com mobilidade reduzida à atividade turística com
+              segurança e autonomia. Para facilitar o desenvolvimento do trabalho de pesquisa foi pensado em adotar o
+              Centro Histórico de São Sebastião como o local para implementar um Roteiro Histórico e Cultural Acessível
+              a fim de tornar o Turismo Acessível um segmento reconhecido no município.</p>
+            <p><strong> Palavras-chave:</strong> Turismo. Acessibilidade. Inclusão Social. Perfil de Demanda. Roteiro
+              Histórico-Cultural.</p>
+            <p><strong> Desenvolvido por:</strong> Caio Rezende de Almeida, Giovanna Silva Reis, Rubens Barros Ferraz e
+              Samuel Moreira de Carvalho.</p>
+            <p><strong> Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-3agv/grupo-rafa.jpg" alt="Grupo 2">
+          <article class="texto-abnt">
+            <p><strong>Grupo 2; TURISMO DE ESPORTES E O FENÔMENO DO SOCCER CAMP COMO FATOR DE MOTIVAÇÃO TURÍSTICA PARA A
+                COSTA SUL DE SÃO SEBASTIÃO</strong></p>
+            <p>O trabalho de pesquisa tem como princípio propor alternativas para maximizar a taxa de ocupação hoteleira
+              de São Sebastião. Considerando que o período pós temporada a região sofre com a problemática da
+              sazonalidade turística, interferindo no setor do turismo que é visto como fenômeno agregador a economia.
+              Foi considerado três fatores que direcionaram o desenvolvimento do projeto, sendo: os aspectos
+              geográficos, o que vem motivando a realização dos deslocamentos e o perfil de demanda. Boiçucanga por ser
+              o bairro com melhor estrutura da costa sul de São Sebastião foi definido como área da pesquisa. A prática
+              do soccer camp como fator de motivação turística é vista como uma ferramenta de transformação social,
+              incentivando crianças e jovens a vivenciarem uma experiência única ao lado de seus familiares. Refere-se a
+              um segmento do turismo constituído por programas e atividades com fins específicos de promover a prática
+              de esportes, sendo uma atividade praticada durante o tempo livre.</p>
+            <p><strong>Palavras-chave:</strong> Turismo. Beach Soccer. Hotelaria. Recreativo. Família.</p>
+            <p><strong>Desenvolvido por:</strong> Gustavo Henrique dos Santos, João Vitor Muniz dos Santos, Kauã Silva
+              dos Santos e Rafael Macedo de Souza.</p>
+            <p><strong> Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-3agv/grupo-gaia.jpg" alt="Grupo 3">
+          <article class="texto-abnt">
+            <p><strong>Grupo 3; SÃO SEBASTIÃO NA ROTA DO TURISMO SOCIAL: Uma Forma de cratizar o Acesso ao
+                Lazer</strong></p>
+            <p>Este trabalho de cunho científico, tem por função encontrar uma alternativa para sanar a seguinte
+              problemática: a sazonalidade turística presente no litoral norte de São Paulo. Para isso este projeto
+              propõe a implantação do turismo social na cidade de São Sebastião. Através de pesquisas, análise do
+              destino, identificação de potenciais e obstáculos e de trocas de conhecimento com profissionais da área,
+              entende-se que o turismo social pode ser uma grande ferramenta no que diz respeito a ascensão econômica
+              desta região. Propondo uma visão constitucional do turismo, o tema turismo social carrega consigo um
+              grande peso: o da democratização turística. Conclui-se, portanto, a importância da promoção deste segmento
+              na região, uma vez que, seu papel torna-se crucial na formação de uma rede turística justa e promissora.
+            </p>
+            <p><strong>Palavras-chave:</strong> Turismo. Social. Lazer. Democracia. Direito. Viagem.</p>
+            <p><strong>Desenvolvido por:</strong> Gaia Braga Schmidt Lins.</p>
+            <p><strong> Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-3agv/grupo-isaa.jpg" alt="Grupo 4">
+          <article class="texto-abnt">
+            <p><strong>Grupo 4; TURISMO HISTÓRICO E CULTURAL: O ROTEIRO DAS CAPELAS CAIÇARAS NA COSTA SUL DE SÃO
+                SEBASTIÃO </strong></p>
+            <p>A atividade turística em São Sebastião enfrenta um período complicado, comum a destinos turísticos
+              litorâneos, trata-se da problemática da sazonalidade turística. Esse problema ocorre devido a Região
+              fomentar basicamente o segmento de Turismo de Sol e Praia. Tal motivação obviamente deve ser respeitada,
+              receber investimentos, porém é importante frisar que o turismo de São Sebastião não é somente praia. A
+              Organização Mundial do Turismo – OMT vem prevenindo os destinos litorâneos a respeito desses problemas e
+              as dificuldades que passarão caso insistam em ‘olhar’ somente para o segmento Sol e Praia. A recomendação
+              é planejar e fortalecer outros segmentos, valorizando o Patrimônio Natural e Patrimônio Histórico. Durante
+              o desenvolvimento do trabalho foram realizados encontros com profissionais da área e visitas técnicas nas
+              áreas de interesse de estudo. A proposta é promover formas de aproveitar o território turístico da costa
+              sul, adotando o potencial das Capelas Caiçaras para o segmento Turismo Histórico. A cultura representada
+              pelo artesanato, culinária, contadores de históricas serão agregadas na caracterização do Roteiro das
+              Capelas Caiçaras.</p>
+            <p><strong>Palavras-chave:</strong> Turismo. História. Cultura. Capelas Caiçara. Artesanato. Roteiro.</p>
+            <p><strong>Desenvolvido por:</strong> Isabella Letícia Rodrigues Matos</p>
+            <p><strong> Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <button class="anterior" onclick="mudarSlide(-1, 'carrossel1')">‹</button>
+        <button class="proximo" onclick="mudarSlide(1, 'carrossel1')">›</button>
+      </div>
+    </div>
+  </div>
+  <!-- ADMINISTRAÇÃO 2023 (MODAL 2) -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal('modal2')">&times;</span>
+      <div class="carrossel" id="carrossel2">
+      <h2>Administração 2023</h2>
+      <div class="slide ativo">
+        <img src="" alt="Grupo 1">
+        <article class="texto-abnt">
+          <p> <strong> GRUPO 1; IDEIAS E SERVIÇOS INOVADORES PARA BARRACA DE PRAIA: Marketing e comunicação</strong></p>
+          <p>RESUMO: Este estudo apresenta estratégias inovadoras para barracas de praia, visando superar desafios de
+            concorrência e baixa
+            lucratividade. A equipe da consultoria "WavesUP" propõe a introdução de serviços recreativos, como um espaço
+            educativo para crianças
+            na praia, e o aluguel de materiais esportivos. Embora as ideias sejam conceituais e não testadas
+            empiricamente, elas são fundamentadas
+            em princípios sólidos de educação e diversão. O objetivo é melhorar a experiência dos clientes e aumentar a
+            visibilidade e lucratividade
+            das barracas de praia. A implementação prática dessas propostas pode transformar positivamente o cenário
+            para as barracas de praia,
+            oferecendo inovação para os comerciantes, e ainda mais conforto aos clientes.</p>
+
+          <p><strong>Palavras-chave:</strong> Inovação, serviços, marketing, barracas de praia, crianças,
+            conscientização ambiental.</p>
+          <p><strong>Desenvolvido por:</strong> Ana Julia Vicente Dos Santos, Felipe Pereira Silva e Juliano Vicente Dos
+            Santos </p>
+          <p><strong> Orientador:</strong> Luciana Leal.</p>
+        </article>
+      </div>
+      <div class="slide">
+        <img src="" alt="Grupo 2">
+        <article class="texto-abnt">
+          <p><strong>GRUPO 2; BICILETARIA COSTA BIKE SHOP: Utilização do marketing digital e redes sociais para o
+              crescimento no fluxo de vendas.</strong></p>
+          <p><strong>RESUMO:</strong> TCC mostra a utilização da administração de marketing da empresa familiar Costa
+            Bike Shop, com mais de 20 anos de atuação.
+            O principal do trabalho é o Marketing Digital, visando melhorar a visibilidade online da empresa, expandir a
+            base de clientes e
+            aumentar as vendas. O Instagram é a plataforma central para divulgação, destacando a saúde e
+            sustentabilidade. O objetivo geral
+            é aprimorar continuamente a empresa, estabelecer parcerias estratégicas, investir em tecnologia, fortalecer
+            a presença nas
+            redes sociais e inovar no mercado de bicicletas. O texto também destaca a importância de promover
+            alternativas ao uso excessivo
+            de veículos motorizados para combater a poluição e incentivar um estilo de vida mais saudável.</p>
+
+          <p><strong>Palavras-chave:</strong> Administração. Marketing. Empresa. Redes sociais. Vendas. </p>
+          <p><strong>Desenvolvido por:</strong>David Lohan, Gabriela Veltman, Lara Costa e Rodrigo Santos. </p>
+          <p><strong> Orientador:</strong> Luciana Leal.</p>
+        </article>
+      </div>
+      <div class="slide">
+        <img src="" alt="Grupo 3">
+        <article class="texto-abnt">
+          <p><strong>GRUPO 3; FAST-FASHION E IMPACTO AMBIENTAL: Marketing digital como ferramenta de valorização dos
+              brechós.</strong></p>
+          <p><strong> RESUMO:</strong> Analisando o âmbito da indústria da moda, encontrou-se uma problemática: os
+            impactos ambientais propagados pela fast fashion.
+            Com base nos resultados obtidos por meio de pesquisas de campo, evidenciou-se a falta de conscientização da
+            população sebastianense em
+            relação às suas formas de consumo, o que impulsiona a desvalorização dos brechós da região. Dessa forma,
+            tais fatores, além da alta do
+            marketing digital, tornaram possível o desenvolvimento de um aplicativo inovador, o ReVeste, que tem como
+            objetivo a divulgação de
+            brechós no bairro de Boissucanga, São Sebastião - São Paulo. </p>
+
+          <p><strong>Palavras-chave:</strong> Brechós; Fast fashion; Marketing digital; Sustentabilidade. </p>
+          <p><strong>Desenvolvido por:</strong>Beatriz Alves Marcelino da Silva, Gabriel Cardoso de Oliveira, Isabelle
+            Santos da Costa, Larissa Silva Gomes e Luan Rocha Santos. </p>
+          <p><strong> Orientador:</strong> Luciana Leal.</p>
+        </article>
+      </div>
+      <div class="slide">
+        <img src="" alt="Grupo 4">
+        <article class="texto-abnt">
+          <p><strong>GRUPO 4; PLANO DE NEGÓCIOS DE UMA EMPRESA DE BOLO DE POTE FITNESS </strong></p>
+          <p><strong> RESUMO:</strong> O trabalho de conclusão de curso (TCC) aborda o tema de uma empresa
+            de bolos de pote fitness, que oferece opções de sobremesas saudáveis e nutritivas
+            para pessoas preocupadas com sua alimentação. Destacando a importância da busca
+            por um estilo de vida saudável e a tendência crescente de alimentos que conciliem
+            sabor e nutrição. A empresa utilizou por meio das redes sociais postagens mostrando a importância de
+            consumir produtos que não contém alto nível de açúcar e de calorias, mostrando
+            assim, os principais riscos à saúde ao consumir produtos ricos em açúcar como
+            adquirir as doenças diabetes, obesidade e obesidade infantil. A Great Pot Cake, uma
+            confeitaria fitness em São Sebastião-SP, é uma promissora oportunidade de negócio,
+            devido ao crescimento do mercado de confeitaria fitness. Uma pesquisa mostrou que
+            90,6% dos entrevistados estariam dispostos a comprar bolos da empresa, e 34,4%
+            consomem doces diariamente. Portanto, a ideia de abrir uma confeitaria artesanal
+            focada em doces fitness na região é viável mercadologicamente.</p>
+
+          <p><strong>Palavras-chave:</strong> Bolo de pote, alimentação, saúde, nutrição, empresa.</p>
+          <p><strong>Desenvolvido por:</strong>Alvaro de Oliveira Macedo, Avila Dhesica Machado Oliveira Santos, Jelry
+            Souza Santos e Maria Clara da Silva Castro </p>
+          <p><strong> Orientador:</strong> Luciana Leal.</p>
+        </article>
+      </div>
+      <div class="slide">
+        <img src="" alt="Grupo 5">
+        <article class="texto-abnt">
+          <p><strong>GRUPO 5; DENTIDADE VISUAL DAS ORGANIZAÇÕES: influência no mercado de trabalho e sociedade </strong>
+          </p>
+          <p><strong>RESUMO:</strong> A falta de reconhecimento no campo do design gráfico e marketing é
+            causada pela ausência de regulamentação dessas profissões, o estigma do marketing
+            como "fácil" e a dificuldade das empresas em estabelecer identidades visuais eficazes.
+            A identidade visual é crucial para o sucesso empresarial, e a combinação de design
+            gráfico e marketing é essencial para criar conexões emocionais com os clientes
+            através de elementos visuais. A pesquisa consistiu em leitura de artigos e e-book,
+            além de uma entrevista. Com os resultados coletados foi identificado que uma
+            identidade visual que não transmite a imagem que a empresa deseja passar, pode
+            “apagar” a organização no mercado de trabalho e sociedade devido a má
+            comunicação visual.</p>
+
+          <p><strong>Palavras-chave:</strong> Design gráfico. Identidade visual. Psicologia das Cores. Teoria das Cores.
+            Marketing.</p>
+          <p><strong>Desenvolvido por:</strong> Cauã Silva Oliveira, Gabriel Ferreira Santos, Isabelle Galdino Teixeira
+            e Mateus Gonçalves do Rosário </p>
+          <p><strong> Orientador:</strong> Luciana Leal.</p>
+        </article>
+      </div>
+      <div class="slide">
+        <img src="" alt="Grupo 6">
+        <article class="texto-abnt">
+          <p><strong>GRUPO 6; PLANO DE MARKETING DA EMPRESA JC LIMPEZA</strong></p>
+          <p><strong>RESUMO:</strong> O plano de marketing da empresa JC Limpeza inclui a abertura de um WhatsApp
+            comercial para facilitar o
+            acesso às vendas e alavancar o faturamento. Esses processos foram analisados e lançados em tabelas mensais
+            para haver um comparativo
+            entre eles. A empresa busca expandir sua base de clientes através de estratégias integradas em todos os
+            departamentos, visando o crescimento e sucesso no mercado. </p>
+
+          <p><strong>Palavras-chave:</strong> plano de marketing, produtos de limpeza, gestão de clientes, comércio.
+          </p>
+          <p><strong>Desenvolvido por:</strong> Ana Luiza dos Santos Ribeiro, Sandrine Castro dos Santos e Thainá Rihs
+            Batista </p>
+          <p><strong> Orientador:</strong> Luciana Leal.</p>
+        </article>
+      </div>
+        <button class="anterior" onclick="mudarSlide(-1, 'carrossel2')">‹</button>
+        <button class="proximo" onclick="mudarSlide(1, 'carrossel2')">›</button>
+      </div>
+    </div>
+  </div>
+  <!--AGENCIAMENTO DE VIAGEM 2024 (MODAL 3) -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal('modal3')">&times;</span>
+      <h2>Agenciamento de Viagens 2024</h2>
+      <div class="carrossel" id="carrossel3">
+        <div class="slide ativo">
+          <img src="fts-2agv/grupo-tcc-gaby.jpg" alt="Grupo 1">
+          <article class="texto-abnt">
+            <p><strong> Grupo 1; TURISMO COLABORATIVO COMO OPORTUNIDADE DE DESENVOLVIMENTO CULTURAL E SOCIAL: A ETEC DE
+                SÃO SEBASTIÃO – CLASSE DESCENTRALIZADA VERDESCOLA COMO EMPREENDIMENTO ANFITRIÃO.</strong></p>
+            <p> Entendimento acerca do turismo vai além do lazer, trata-se de um segmento que proporciona transformação
+              pessoal e profissional. Visitar diferentes lugares significa enriquecer-se culturalmente e entender melhor
+              a dinâmica da vida. Para isso é necessário buscar formas de viajar e interagir com a comunidade receptora,
+              momento do intercâmbio cultural e social e compartilhamento de conhecimento. Nesse sentido surge a prática
+              do Turismo Colaborativo como proposta de transformação, unindo turismo e educação. O segmento Colaborativo
+              é uma prática que tem o propósito de trocar todo custeio da viagem (principalmente com hospedagem e
+              alimentação) por prestação de serviço. Essa prática é muito comum no exterior, no Brasil vem crescendo,
+              inclusive no litoral norte de São Paulo há um certo crescimento. Assim, o projeto de pesquisa tem como
+              objetivo propor a implantação do Turismo Colaborativo na Classe Descentralizada Verdescola da Etec de São
+              Sebastião no intuito de contar com turistas voluntários como complemento para a formação profissional e
+              pessoal dos alunos.</p>
+            <p><strong>Palavras-chave:</strong> Turismo. Anfitrião. Ensino-Aprendizagem. Transformação do turismo.
+              Formação profissional. </p>
+            <p><strong>Desenvolvido por:</strong> Gabrielly da Silva Vilas Boas, Matheus Almeida Silva e Thyfani
+              Aparecida Ribeiro Assis.</p>
+            <p><strong> Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2agv/grupo-leticia.jpg" alt="Grupo 2">
+          <article class="texto-abnt">
+            <p><strong>Grupo 2; A IMPORTÂNCIA DO SERVIÇO DA AGÊNCIA DE TURISMO RECEPTIVO PARA PROMOVER, QUALIFICAR E
+                DIVERSIFICAR O POTENCIAL DO DESTINO SÃO SEBASTIÃO.</strong></p>
+            <p>O turismo é uma prática econômica que faz parte do sonho de praticamente todas as pessoas, a viagem cura,
+              transforma e resulta em momentos únicos, marcantes para a vida. A viagem contribui para o crescimento
+              pessoal, equilíbrio emocional e enriquecimento cultural. O processo de definir o destino da próxima viagem
+              exige que ocorra pesquisas para conhecimento prévio de como chegar ao destino, as atrações, as opções de
+              hospedagem, melhor época do ano para visitar, tarifário médio, além dos aspectos histórico, cultural e
+              ambiental. E no momento da pesquisa o turista busca segurança, uma referência para que tudo ocorra bem na
+              viagem. E a referência mais adequada para transmitir essa segurança é a atuação da agência de turismo
+              receptivo, por estar fixada no destino, facilitando a intermediação com parceiros de diferentes serviços e
+              conhecer o contexto turístico da localidade. E com esse olhar o desenvolvimento do trabalho de conclusão
+              de curso apresenta a relevância da agência de turismo receptivo para a qualidade do destino.</p>
+            <p><strong>Palavras-chave:</strong> Passeios. Turismo Receptivo. Potencial Turístico. Destino Turístico.</p>
+            <p><strong>Desenvolvido por:</strong> Karla Cristina Rodrigues dos Santos, Letícia dos Anjos Silva e Maria
+              Clara dos Santos Teixeras </p>
+            <p><strong>Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2agv/grupo-ash.jpg" alt="Grupo 3">
+          <article class="texto-abnt">
+            <p><strong>Grupo 3; O POTENCIAL NATURAL DE SÃO SEBASTIÃO PARA ATRAIR TURISTA DURANTE AS QUATRO ESTAÇOES DO
+                ANO: FORTALECIMENTO DA OFERTA TURÍSTICA LOCAL </strong></p>
+            <p>As cidades turísticas que têm como principal motivação o Turismo de Sol e Praia sofrem com a sazonalidade
+              turística, uma vez que, a maior concentração de turistas ocorre durante a estação de verão. No intuito de
+              evitar esse problema é importante que os atores responsáveis pela organização e promoção do destino estude
+              e apresente alternativas para manter uma taxa de ocupação suficiente e consequentemente preservar o
+              emprego direto e indireto ocasionados pela atividade turística. A dependência do Turismo de Sol e Praia
+              traz outras discussões, como a questão das mudanças climáticas que vem deixando as estações do ano
+              bagunçada e o problema da balneabilidade das praias devido a ausência de saneamento básico. Ambas as
+              questões provocam a reflexão e a preocupação em buscar motivações alternativas para atrair a demanda
+              turística durante as quatro estações do ano. Essa percepção da condição para aproveitar toda a
+              potencialidade que o destino tem a oferecer, variando de atividades na Mata Atlântica, no mar e eventos. O
+              trabalho de pesquisa apresenta alternativas para contribuir com a diminuição do problema apontado.</p>
+            <p><strong>Palavras-chave:</strong> Turismo. Sazonalidade. Oferta Turística. Produto Turístico. Economia.
+            </p>
+            <p><strong>Desenvolvido por:</strong>Ashley Vitoria da Silva Nascimento, Evelyn Sousa dos Santos e Nadje
+              Vitoria Ferreira de Souza.</p>
+            <p><strong>Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2agv/grupo-lorrana.jpg" alt="Grupo 4">
+          <article class="texto-abnt">
+            <p><strong> Grupo 4; PROPOSTA DE IMPLANTAÇÃO DA ECO CAMP AGÊNCIA DE TURISMO RECEPTIVO ESPECIALIZADA EM
+                EDUCAÇÃO AMBIENTAL E EDUCAÇÃO CULTURAL EM SÃO SEBASTIÃO: FORMA DIFERENCIADA PARA ATRAIR E ENTRETER O
+                TURISTA </strong></p>
+            <p>O desenvolvimento do trabalho de pesquisa tem como proposito provocar uma reflexão sobre formas de
+              aproveitar o território turístico, por meio do convívio e desenvolvimento de atividades na natureza,
+              agregando práticas de lazer e educação ambiental como oportunidades para realizar experimentação lúdica e
+              propor alternativas de conscientização ambiental visando a harmonia entre as pessoas, a relação entre o
+              homem e a natureza. Permitindo ainda que ocorra de forma integradora, relacionando com diferentes campos
+              de atuação e formação profissional, incentivando a participação e o pensamento criativo e crítico durante
+              os momentos de vivências ambiental e cultural. A abordagem visa o fortalecimento de ações que valoriza a
+              sustentabilidade, por meio do comprometimento do tripé social, cultural e ambiental. O trabalho de
+              pesquisa discorre a respeito de atividades turísticas como instrumento de transformação. E ressalta a
+              importância da agência de receptivo na formatação de roteiros integradores para fomentar e diversificar as
+              formas de atrair e entreter os visitantes.</p>
+            <p><strong>Palavras-chave:</strong> Turismo. Agência de Receptivo. Lazer. Aspecto Cultural. Educação
+              Ambiental. </p>
+            <p><strong>Desenvolvido por:</strong>Ana Lorrana Vieira Santos, Alice Batistela Perdichizzi e Anaí Rodrigues
+              Tavares.</p>
+            <p><strong>Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2agv/grupo-estefani.jpg" alt="Grupo 5">
+          <article class="texto-abnt">
+            <p><strong> Grupo 5; TURISMO CULTURAL: ROTEIRO “CAMINHO DO ARTESANATO CAIÇARA” NA COSTA SUL DE SÃO SEBASTIÃO
+                PARA DIVERSIFICAR A MOTIVAÇÃO TURÍSTICA E VALORIZAR O ARTESÃO LOCAL</strong></p>
+            <p>O trabalho de pesquisa tem como proposito mostrar que a destinação turística deve prezar por uma
+              identidade própria, peculiar as características do lugar. A herança cultural é marcante na
+              representatividade de lugares, pode ser representada pela culinária típica, ou seja, um prato tradicional,
+              ou pode ser representada pela confecção de artesanato que simboliza a região turística. E nesse aspecto
+              São Sebastião é um bom exemplo na preservação de produção de artesanato típico. A matéria-prima
+              predominante é a cerâmica para fazer panelas de barro, a taboa que é utilizada no preparo de tapetes e
+              chapéus e a caxeta que utilizada para confeccionar os passarinhos que fazem parte do cenário natural. Essa
+              técnica é passada entre as gerações, porém, percebe-se que o interesse das futuras gerações pela
+              continuidade de confeccionar o artesanato vem diminuindo, perdendo força, tornando-se preocupante. A
+              identidade cultural que é tão importante para promover e simbolizar o destino vive sob ameaça. O provável
+              desinteresse das futuras gerações deve-se a questões ambientais, onde extrair mesmo que de forma
+              sustentável a matéria-prima está complicado. Perante a esse problema o turismo se apresenta como uma
+              alternativa de resgate e fortalecimento da arte local.</p>
+            <p><strong>Palavras-chave:</strong> Turismo. Cultura. Artesanato. Roteiro Turístico. Identidade Cultural.
+              Motivação Turística.</p>
+            <p><strong>Desenvolvido por:</strong> Eloá Ribeiro de Oliveira, Estefani dos Santos Andrade e Letícia
+              Coutinho dos Santos.</p>
+            <p><strong>Orientador:</strong> Rogério Luis Santana Barroso.</p>
+          </article>
+        </div>
+        <button class="anterior" onclick="mudarSlide(-1, 'carrossel3')">‹</button>
+        <button class="proximo" onclick="mudarSlide(1, 'carrossel3')">›</button>
+      </div>
+    </div>
+  </div>
+  <!-- ADIMINISTRAÇÃO 2024 (MODAL 4)-->
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal('modal4')">&times;</span>
+      <h2>Administração 2024</h2>
+      <div class="carrossel" id="carrossel4">
+        <div class="slide ativo">
+          <img src="fts-2adi/grupo-naga.jpg" alt="Grupo 1">
+          <article class="texto-abnt">
+            <p><strong>Grupo 1; PLANO DE NEGÓCIOS DA EMPRESA FLORA TRIANGULAR: Focada na propagação da jardinagem
+                terapia como forma de mitigar os impactos da síndrome de Burnout no ambiente empresarial.</p></strong>
+            <p>A Flora Triangular opera no mercado de jardinagem terapêutica, um procedimento que integra elementos
+              naturais aos ambientes corporativos, transformando-os em ambientes mais agradáveis e aconchegantes. O nome
+              "Flora Triangular" vem de dois conceitos principais: "Flora", que simboliza a variedade de plantas da
+              natureza, e "Triangular", que se refere à palmeira triangular, uma planta robusta e de grande importância
+              das famílias de plantas das palmeiras. Esse significado mostra a intenção da empresa em aumentar a
+              robustez e a diversidade no ambiente corporativo. Outrossim, é de melhorar o bem-estar e a saúde mental
+              dos funcionários; em espaços corporativos e escritórios, estabelecendo o uso de jardins terapêuticos e
+              práticas de jardinagem, a empresa transforma locais de trabalho principalmente fechados e cansativos em
+              ambientes com plantas e cheios de vida.</p>
+            <p><strong> Desenvolvido por:</strong> Amanda Lourenço Oliveira, Gabriel Nagatani Campos e João Pedro De
+              Jesus Souza. </p>
+            <p><strong> Orientador:</strong> Luciana Leal.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2adi/grupo-sara.jpg" alt="Grupo 2">
+          <article class="texto-abnt">
+            <p><strong>Grupo 2; PLANO DE NEGÓCIOS DE UMA ORGANIZAÇÃO FILANTRÓPICA DE PROTEÇÃO AOS ANIMAIS NO MUNICÍPIO
+                DE SÃO SEBASTIÃO </strong></p>
+            <p>A "Patinhas Felizes" é uma ONG que atua no resgate, cuidado e adoção de animais em situações de abandono,
+              maus-tratos e risco, tendo em vista que existem 30,2 milhões de animais abandonados no Brasil, dados
+              retirados de um estudo realizado pelo instituto IMVC. O principal serviço da organização é o acolhimento,
+              cuidado e encaminhamento para adoção de animais necessitados. Além disso, a organização promove a
+              conscientização da importância da proteção animal e incentiva a adoção responsável. A organização também
+              comercializa brinquedos e Utensílios feitos de materiais reutilizáveis, para os pets, além de possuir um
+              ala de banho e tosa dentro do petshop, onde vende tanto os produtos quanto o seu serviço de banho e tosa.
+              Os principais clientes da "Patinhas Felizes" são os amantes de animais que desejam adotar um pet, doadores
+              que contribuem financeiramente para a manutenção da ONG e voluntários que se engajam nas atividades de
+              resgate e cuidado dos animais.</p>
+            <p><strong> Desenvolvido por:</strong> Ana Vitória deAlmeida Rezende, Maria Luiza Oliveira dos Santos,
+              Robson Bezerra de Carvalho Junior e Sara da Silva Santos.</p>
+            <p><strong> Orientador:</strong> Luciana Leal.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2adi/grupo-3.jpg" alt="Grupo 3">
+          <!-- Adicionei um placeholder para a imagem que estava faltando -->
+          <article class="texto-abnt">
+            <p><strong> Grupo 3; PLANO DE NEGÓCIOS: Aether Studios.</strong></p>
+            <p>Aether Studios é um projeto acadêmico e pessoal, fundado em 2023 complacente ao underground brasileiro,
+              localizada no Litoral Norte de São Paulo. Marca de estampas independente criada de jovens para jovens. A
+              Aether preza pela moda nacional, buscando realizar uma confecção exclusivamente com produtos locais,
+              valorizando profissionais da região que estão envolvidos na pequena produção. Tendo como missão principal
+              objetivo de expressar suas artes únicas através de suas estampas.</p>
+            <p><strong>Lucratividade:</strong> 73,67% ao ano.</p>
+            <p><strong>Rentabilidade:</strong> 205,00% ao ano.</p>
+            <p><strong>Prazo de retorno do investimento total:</strong> 6 meses.</p>
+            <p><strong>Ponto de Equilíbrio:</strong> (PE): R$ 40.333,32.</p>
+            <p><strong>Desenvolvido por:</strong> Luiz Benjamim Santos Cardoso, Marcos Yankee Do Prado Santos, Pablo
+              Henrique Rodrigues De Oliveira e Victor Zaritta Santos.</p>
+            <p><strong> Orientador:</strong> Luciana Leal.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2adi/grupo-4.jpg" alt="Grupo 4">
+          <!-- Adicionei um placeholder para a imagem que estava faltando -->
+          <article class="texto-abnt">
+            <p><strong> Grupo 4; ECOESSENCE: Velas Aromaterapeuticas</strong></p>
+            <p>A Loja EcoEssence é uma loja que vende o bem-estar mediante das velas aromáticas de aromaterapia, que
+              oferecem em seus serviços velas produzidas de forma sustentável que contam com matérias que não agridem o
+              meio ambiente e junto a vela é oferecido aromas que auxiliam pessoas que sofrem de transtornos emocionais
+              como a ansiedade. Sendo entregue no produto final uma vela aromática específica para cada caso em
+              recipientes reutilizáveis acompanhado de sementes para uma reutilização da embalagem após o consumo da
+              vela. Os principais produtos oferecidos são velas de aromaterapia em embalagens sustentáveis. Os
+              principais clientes em foco são pessoas entre qualquer idade que sofram de problemas emocionais e físicos
+              e queiram uma alternativa nova para melhorar de forma simples o seu dia a dia. A empresa EcoEssence não
+              tem uma localização física pois é uma loja online que se estabelece por meio das redes sociais. O montante
+              capital a ser investido na empresa inicialmente fica entorno de $10.000,00, o faturamento mensal irá
+              depender da quantidade de demanda em cada mês podendo variar entre 500 a 1000 unidades a cada mês no valor
+              que vai de $08,00 a $14,00, esperando obter o lucro de 30% (exemplo), a empresa espera que o capital de
+              lucro investido seja retornado em um tempo médio 5 a 6 messes.</p>
+            <p><strong>Desenvolvido por:</strong>Ana Clara Alves Vieira, Gabrielly Kimbely De Almeida Araújo e Nathaly
+              Fernandes Solena.</p>
+            <p><strong> Orientador:</strong> Luciana Leal.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2adi/grupo-5.jpg" alt="Grupo 5">
+          <!-- Adicionei um placeholder para a imagem que estava faltando -->
+          <article class="texto-abnt">
+            <p><strong> Grupo 5; PLANO DE MARKETING DE UM CARRINHO DE PRAIA INOVAÇÃO E AUTOMAÇÃO.</strong></p>
+            <p>O presente plano de marketing é voltado ao “Cantinho da Ka”, um carrinho de praia localizado em Boracéia,
+              na Praia de Bora Bora, São Sebastião, conhecida por suas águas cristalinas e popularidade entre turistas.
+              A clientela principal do Cantinho da Ka é formada por turistas adultos e idosos, com ou sem crianças, que
+              frequentam a praia principalmente na alta temporada. Na baixa temporada, os moradores locais representam a
+              maior parte dos clientes. Apesar de já possuir uma presença no Instagram, o “Cantinho da Ka” carecia de
+              uma identidade visual consistente e profissional, o que motivou a criação de um novo perfil para reforçar
+              o posicionamento da marca e destacar o carrinho de praia perante a concorrência.</p>
+            <p><strong>Desenvolvido por:</strong> Laércio Lopes Parra Junior, Luis David De Souza Farias e Marco Antônio
+              Silva Santos.</p>
+            <p><strong> Orientador:</strong> Luciana Leal.</p>
+          </article>
+        </div>
+        <div class="slide">
+          <img src="fts-2adi/grupo-6.jpg" alt="Grupo 6">
+          <!-- Adicionei um placeholder para a imagem que estava faltando -->
+          <article class="texto-abnt">
+            <p><strong>Grupo 6; PLANO DE NEGÓCIO DA EMPRESA NEW DESIGNS.</strong></p>
+            <p>ANew Designs se trata de uma empresa que atua no setor de design gráfico, prestando serviços para
+              pequenas empresas que estão começando no mercado e desejam criar uma identidade visual moderna. A sede da
+              empresa será localizada na Rua Colombo, nº 615, Maresias, São Sebastião- SP. No entanto, a empresa opera
+              de forma remota, utilizando o Instagram e o WhatsApp como canais de venda e comunicação para negociar e
+              oferecer seus serviços de design.</p>
+            <p><strong>Desenvolvido por:</strong> Joaquim Ferreira Cardoso, Kauan Santos Pereira, Mateus Castro Dos
+              Santos e Vinicius Garcia Moreira Madalosso.</p>
+            <p><strong> Orientador:</strong> Luciana Leal.</p>
+          </article>
+        </div>
+        <button class="anterior" onclick="mudarSlide(-1, 'carrossel4')">‹</button>
+        <button class="proximo" onclick="mudarSlide(1, 'carrossel4')">›</button>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL 5 -->
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal('modal5')">&times;</span>
+      <h2>Meio Ambiente 2025</h2>
+      <img src="fotos/apresentacao-ma.jpg" alt="Grupo 5">
+      <p>Análise de resíduos sólidos nas praias urbanas.</p>
+    </div>
+  </div>
+  <!-- MODAL 6 -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal('modal6')">&times;</span>
+      <h2>Marketing 2025</h2>
+      <img src="fotos/apresentacao-mkt.jpg" alt="Grupo 6">
+      <p>Campanhas digitais para o turismo regional.</p>
+    </div>
+  </div>
+  <script>
+    function mudarSlide(direcao, carrosselId) {
+      const carrossel = document.getElementById(carrosselId);
+      const slides = carrossel.querySelectorAll('.slide');
+      let indiceAtual = Array.from(slides).findIndex(slide => slide.classList.contains('ativo'));
+      slides[indiceAtual].classList.remove('ativo');
+      let novoIndice = indiceAtual + direcao;
+      if (novoIndice < 0) novoIndice = slides.length - 1;
+      if (novoIndice >= slides.length) novoIndice = 0;
+      slides[novoIndice].classList.add('ativo');
+    }
+  </script>
+  <!-- RODAPÉ -->
+  <footer>
+    <footer>
+      <div class="rodape-container">
+        <div class="rodape-coluna">
+          <h4> 📞 Contato</h4>
+          <p> email: estudantiljornal993@gmail.com<br></p>
+        </div>
+
+        <div class="rodape-coluna">
+          <h4>📱 Redes Sociais</h4>
+          <ul>
+            <li><a href="https://instagram.com/Je_Costasul ">Jornal Estudantil Costa Sul </a></li>
+            <li><a href="https://instagram.com/etec.cdverdescola">ETEC - Extensão Verdescola </a></li>
+            <li><a href="https://instagram.com/institutoconservacaocosteira">ICC - Instituto Conservação Costeira</a>
+          </li>
+          </ul>
+        </div>
+
+        <div class="rodape-coluna">
+          <h4>🔗 Navegue</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="curiosidades.html">Curiosidade</a></li>
+            <li><a href="eventos.html">Eventos</a></li>
+            <li><a href="destaque.html">Destaque</a></li>
+            <li><a href="apresentacao.html">TCC</a></li>
+          </ul>
+        </div>
+
+        <div class="rodape-coluna">
+          <h4>🔗 Sites</h4>
+          <ul>
+            <li><a href="https://nsa.cps.sp.gov.br"> NSA </a></li>
+            <li><a href="https://www.canva.com"> Canva</a></li>
+            <li><a href="https://www.microsoft.com"> Microsoft Teams</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rodape-final">
+        <p>&copy; 2026 Jornal Estudantil - Costa Sul de São Sebastião | Desenvolvido por egressos de Agênciamento de Viagens e Administração</p>
+      </div>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

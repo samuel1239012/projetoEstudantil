@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/png" href="copa-etec/Imagem do WhatsApp de 2025-10-15 à(s) 22.12.39_ae84bdc0.jpg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etec de São Sebastião - CD Verdescola</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="page-fade">
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="copa-etec/Imagem do WhatsApp de 2025-10-15 à(s) 22.12.39_ae84bdc0.jpg" alt="Logo da etec">
+        <h1>Jornal Estudantil - Costa Sul de São Sebastião</h1>
+      </div>
+
+      <nav class="nav">
+      <button class="menu-toggle" id="btn-mobile" aria-label="Abrir Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="curiosidades.html">Curiosidades</a></li>
+        <li class="dropdown">
+          <a href="eventos.html">Eventos ▾</a>
+          <ul class="submenu">
+            <li><a href="#">Etec</a></li>
+            <li><a href="#">Sebastiana</a></li>
+            <li><a href="#">Walkir</a></li>
+          </ul>
+        </li>
+        <li><a href="destaque.html">Destaque</a></li>
+        <li><a href="apresentacao.html">TCCs</a></li>
+        <li><a href="professores.html">Professores</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img src="fotos/foto-da-praia.jpg" alt="Foto da praia" class="hero-image">
+    <div class="hero-content">
+      <h1>📅 Categorias de Eventos</h1>
+      <h2>"<em>"Conheça os principais tipos de eventos que realizamos na ETEC!"</em>"</h2>
+     <a href="destaque.html" class="cta-button">Destaques -> </a>
+    </div>
+  </section>
+
+  <main>
+    <section id="eventos">
+      <h1>📅 Categorias de Eventos</h1>
+      <h2><em>"Conheça os principais tipos de eventos que realizamos na ETEC!"</em></h2>
+
+      <!-- Sistema de Abas para Categorias de Eventos -->
+      <div class="abas-eventos">
+        <div class="abas-header">
+          <button class="aba-btn active" onclick="mostrarAba('todos')">✨ Visão Geral</button>
+          <button class="aba-btn" onclick="mostrarAba('paulo-freire')">📚 Semana Paulo Freire</button>
+          <button class="aba-btn" onclick="mostrarAba('tecnologica')">💻 Semana da Educação Midiatica</button>
+          <button class="aba-btn" onclick="mostrarAba('Semana da Educação')">🏭 Visitas Técnicas</button>
+          <button class="aba-btn" onclick="mostrarAba('interclasse')">⚽ Interclasse</button>
+        </div>
+
+        <!-- Conteúdo da aba "Visão Geral" -->
+        <div id="aba-todos" class="aba-conteudo active">
+          <div class="categoria-header">
+            <img src="fts-eventos/ft-do-castelo.jpg" alt="Visão Geral dos Eventos">
+            <div class="categoria-info">
+              <h3>✨ Visão Geral dos Eventos da ETEC</h3>
+              <p>Nossa escola promove uma variedade de eventos ao longo do ano letivo, buscando enriquecer a experiência educacional dos alunos e integrar a comunidade. Desde atividades acadêmicas e culturais até competições esportivas e visitas técnicas, há sempre algo acontecendo na ETEC Verdescola.</p>
+              <p>Explore as abas acima para conhecer mais sobre cada tipo de evento e o que eles oferecem!</p>
+            </div>
+          </div>
+          <!-- Você pode adicionar mais conteúdo geral aqui se desejar -->
+        </div>
+
+        <!-- Nova aba: Semana Paulo Freire -->
+        <div id="aba-paulo-freire" class="aba-conteudo">
+          <div class="categoria-header">
+            <img src="fts-eventos/ft-do-charle.jpg" alt="Semana Paulo Freire">
+            <div class="categoria-info">
+              <h3>📚 Semana Paulo Freire</h3>
+              <p>A Semana Paulo Freire é um período dedicado à reflexão e ao aprofundamento dos princípios da pedagogia libertadora de Paulo Freire. Através de palestras, mesas-redondas, oficinas e atividades culturais, buscamos promover o pensamento crítico, a autonomia e o engajamento social dos nossos estudantes.</p>
+              <p>Este evento é fundamental para fortalecer a educação como ferramenta de transformação e cidadania.</p>
+              <!-- Adicione mais conteúdo sobre a Semana Paulo Freire aqui -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Nova aba: Semana Tecnológica -->
+        <div id="aba-tecnologica" class="aba-conteudo">
+          <div class="categoria-header">
+            <img src="/placeholder.svg?height=200&width=400" alt="Semana Tecnológica">
+            <div class="categoria-info">
+              <h3>💻 Semana Tecnológica</h3>
+              <p>A Semana Tecnológica é o nosso principal evento de inovação, onde apresentamos as últimas tendências em tecnologia e os projetos mais criativos desenvolvidos pelos alunos. Com workshops práticos, demonstrações e palestras com especialistas, incentivamos a curiosidade e o desenvolvimento de soluções inovadoras para os desafios do futuro.</p>
+              <p>É uma oportunidade única para os estudantes mostrarem seu potencial e se conectarem com o mercado de trabalho.</p>
+              <!-- Adicione mais conteúdo sobre a Semana Tecnológica aqui -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Nova aba: Visitas Técnicas -->
+        <div id="aba-visitas-tecnicas" class="aba-conteudo">
+          <div class="categoria-header">
+            <img src="/placeholder.svg?height=200&width=400" alt="Visitas Técnicas">
+            <div class="categoria-info">
+              <h3>🏭 Visitas Técnicas</h3>
+              <p>As Visitas Técnicas são uma extensão da sala de aula, proporcionando aos alunos a oportunidade de conhecer de perto o funcionamento de empresas, indústrias e instituições relevantes para seus cursos. Essa experiência prática complementa o aprendizado teórico, permitindo que os estudantes visualizem a aplicação do conhecimento e as rotinas profissionais.</p>
+              <p>É um momento de grande aprendizado e inspiração para a futura carreira.</p>
+              <!-- Adicione mais conteúdo sobre Visitas Técnicas aqui -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Nova aba: Interclasse -->
+        <div id="aba-interclasse" class="aba-conteudo">
+          <div class="categoria-header">
+            <img src="fts-eventos/ft-do-inter.jpg" alt="Interclasse">
+            <div class="categoria-info">
+              <h3>⚽ Interclasse</h3>
+              <p>O Interclasse é a nossa tradicional competição esportiva e cultural que promove a integração entre as turmas e o desenvolvimento do espírito esportivo. Com diversas modalidades, desde futebol e vôlei até apresentações artísticas, o evento celebra o talento e a união dos nossos estudantes.</p>
+              <p>É um momento de diversão, competição saudável e construção de memórias inesquecíveis.</p>
+              <!-- Adicione mais conteúdo sobre o Interclasse aqui -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Função para mostrar/ocultar abas
+    function mostrarAba(abaId) {
+      // Remove classe active de todos os botões e conteúdos
+      document.querySelectorAll('.aba-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.aba-conteudo').forEach(conteudo => conteudo.classList.remove('active'));
+      
+      // Adiciona classe active no botão clicado
+      document.querySelector([onclick="mostrarAba('${abaId}')"]).classList.add('active');
+      
+      // Mostra o conteúdo correspondente
+      const conteudo = document.getElementById(aba-$-{abaId});
+      if (conteudo) {
+        conteudo.classList.add('active');
+      }
+    }
+  </script>
+
+  <style>
+
+      /* Dropdown*/
+      .dropdown {
+      position: relative;
+      }
+      .dropdown:hover .submenu {
+      display: block;
+      }
+      .dropdown > a::after {
+      content: " ▾";
+      font-size: 0.8em;
+      }
+
+    /* Estilos para o sistema de abas */
+    .abas-eventos {
+      margin: 40px auto; /* Centraliza e adiciona margem */
+      max-width: 1000px; /* Limita a largura para melhor leitura */
+    }
+
+    .abas-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .aba-btn {
+      background: transparent;
+      border: 2px solid #2d7a5e;
+      color: #2d7a5e;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Evita quebra de linha nos botões */
+    }
+
+    .aba-btn:hover {
+      background: rgba(45, 122, 94, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .aba-btn.active {
+      background: linear-gradient(135deg, #2d7a5e, #1b5e20);
+      color: white;
+      box-shadow: 0 5px 15px rgba(45, 122, 94, 0.4);
+    }
+
+    .aba-conteudo {
+      display: none;
+      animation: fadeIn 0.5s ease;
+      background: rgba(255, 255, 255, 0.98); /* Fundo branco para o conteúdo */
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .aba-conteudo.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .categoria-header {
+      display: flex;
+      background: white; /* Fundo branco para o header da categoria */
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      border: 1px solid #eee; /* Borda sutil */
+    }
+
+    .categoria-header img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      flex-shrink: 0; /* Impede que a imagem encolha */
+    }
+
+    .categoria-info {
+      padding: 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .categoria-info h3 {
+      color: #1b5e20;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .categoria-info p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Removendo estilos de elementos que não existem mais */
+    .calendario-container, .eventos-proximos, .evento-card, .evento-data, .evento-info, .btn-inscricao, .eventos-passados, .evento-passado, .evento-passado-info, .modal-inscricao, .form-group, .btn-enviar {
+      display: none !important; /* Garante que sejam removidos */
+    }
+
+    /* Responsividade para as abas */
+    @media (max-width: 768px) {
+      .abas-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+      }
+      
+      .aba-btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      
+      .categoria-header {
+        flex-direction: column;
+      }
+      
+      .categoria-header img {
+        width: 100%;
+        height: 200px;
+      }
+      
+      .categoria-info {
+        padding: 20px;
+      }
+
+      .aba-conteudo {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .aba-btn {
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+      
+      .categoria-info h3 {
+        font-size: 20px;
+      }
+      
+      .categoria-info p {
+        font-size: 14px;
+      }
+    }
+  </style>
+
+
+<!-- RODAPÉ -->
+  <footer>
+     <footer>
+    <div class="rodape-container">
+      <div class="rodape-coluna">
+        <h4> 📞 Contato</h4>
+        <p> email: estudantiljornal993@gmail.com<br></p>
+      </div>
+
+      <div class="rodape-coluna">
+        <h4>📱 Redes Sociais</h4>
+        <ul>
+          <li><a href="https://instagram.com/Je_Costasul ">Jornal Estudantil Costa Sul </a></li>
+          <li><a href="https://instagram.com/etec.cdverdescola">ETEC - Extensão Verdescola </a></li>
+          <li><a href="https://instagram.com/institutoconservacaocosteira">ICC - Instituto Conservação Costeira</a>
+        </li>
+      </div>
+
+      <div class="rodape-coluna">
+        <h4>🔗 Navegue</h4>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="curiosidades.html">Curiosidade</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="destaque.html">Destaque</a></li>
+          <li><a href="apresentacao.html">TCC</a></li>
+        </ul>
+      </div>
+
+      <div class="rodape-coluna">
+        <h4>🔗 Sites</h4>
+        <ul>
+          <li><a href="https://nsa.cps.sp.gov.br"> NSA </a></li>
+          <li><a href="https://www.canva.com"> Canva</a></li>
+          <li><a href="https://www.microsoft.com"> Microsoft Teams</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape-final">
+    <p>&copy; 2026 Jornal Estudantil - Costa Sul de São Sebastião | Desenvolvido por egressos de Agênciamento de Viagens e Administração</p>
+    </div>
+  
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

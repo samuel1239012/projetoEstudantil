@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/png" href="copa-etec/Imagem do WhatsApp de 2025-10-15 à(s) 22.12.39_ae84bdc0.jpg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jornal Estudantil</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-destaque-content {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 800px;
+      width: 96vw;
+      padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+      animation: modal-enter .3s;
+      overflow-y: auto;
+      max-height: 93vh;
+    }
+
+    @keyframes modal-enter {
+      from {
+        transform: scale(0.98) translateY(40px);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .fechar {
+      position: absolute;
+      top: 30px;
+      right: 35px;
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: #13522a;
+      cursor: pointer;
+      z-index: 100;
+      transition: color .2s;
+      line-height: 1;
+    }
+
+    .fechar:hover {
+      color: #1b5e20;
+    }
+
+    #modal-titulo {
+      color: #1b5e20;
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 18px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      word-break: break-word;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .carousel-modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 0;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
+      position: relative;
+    }
+
+    .carousel-btn {
+      background: none;
+      border: none;
+      color: #000000;
+      font-size: 2.5rem;
+      width: 60px;
+      height: 100%;
+      cursor: pointer;
+      z-index: 1;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .carousel-btn:active,
+    .carousel-btn:hover {
+      color: #228051;
+    }
+
+    .carousel-modal img {
+      display: block;
+      width: 100%;
+      max-width: 680px;
+      max-height: 340px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin: 0 0;
+      box-shadow: 0 2px 12px #0001;
+      background: #eee;
+      flex: 1 1 auto;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      gap: 7px;
+      justify-content: center;
+      margin: 7px 0 0 0;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #bbb;
+      display: inline-block;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .carousel-dot.active {
+      background: #2d7a5e;
+    }
+
+    .carousel-legenda {
+      font-size: 1.13em;
+      margin: 8px 0 20px 0;
+      color: #222;
+      text-align: center;
+      min-height: 1.6em;
+    }
+
+    mark {
+      background: #e3f4e4;
+      color: #1b5e20;
+      padding: 0.12em 0.36em;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* Seu CSS original continua abaixo: */
+    .destaque-principal {
+      margin: 30px 0 50px 0;
+    }
+
+    .destaque-hero {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }
+
+    .destaque-hero img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .destaque-hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 40px;
+    }
+
+    .badge-destaque {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .destaque-hero-content h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .destaque-hero-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .btn-saiba-mais {
+      background: linear-gradient(135deg, #2d7a5e, #1b5e20);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-saiba-mais:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(45, 122, 94, 0.4);
+    }
+
+    .grid-destaques {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .destaque-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .destaque-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .destaque-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .destaque-content {
+      padding: 25px;
+    }
+
+    .categoria {
+      background: linear-gradient(135deg, #2d7a5e 0%, #1b5e20 100%);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .destaque-content h3 {
+      font-size: 28px;
+      color: #1b5e20;
+      margin: 15px 0;
+      line-height: 1.3;
+    }
+
+    .destaque-conteudo {
+      padding: 0 30px 30px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .destaque-info {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .destaque-content p {
+     margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .destaque-conteudo ul {
+     margin: 20px 0;
+     padding-left: 30px;
+    }
+    .destaque-conteudo strong {
+      color: #1b5e20;
+    }
+
+    .destaque-content button {
+      background: transparent;
+      color: #2d7a5e;
+      border: 2px solid #2d7a5e;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .destaque-content button:hover {
+      background: #2d7a5e;
+      color: white;
+    }
+
+    .estatisticas {
+      background: linear-gradient(135deg, #2d7a5e, #1b5e20);
+      color: white;
+      padding: 50px 30px;
+      border-radius: 20px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .estatisticas h3 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-label {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .hall-da-fama {
+      margin: 50px 0;
+    }
+
+    .hall-da-fama h3 {
+      text-align: center;
+      color: #1b5e20;
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .ex-alunos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .ex-aluno-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .ex-aluno-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .ex-aluno-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #2d7a5e;
+    }
+
+    .ex-aluno-card h4 {
+      color: #1b5e20;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .ex-aluno-card p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .destaque-hero-content {
+        padding: 20px;
+      }
+
+      .destaque-hero-content h2 {
+        font-size: 24px;
+      }
+
+      .grid-destaques {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-number {
+        font-size: 36px;
+      }
+
+      .ex-alunos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-destaque-content {
+        padding: 12px 8px 8px 8px;
+      }
+
+      .fechar {
+        right: 12px;
+        top: 6px;
+      }
+
+
+    }
+  </style>
+</head>
+
+<body class="page-fade">
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="copa-etec/Imagem do WhatsApp de 2025-10-15 à(s) 22.12.39_ae84bdc0.jpg" alt="Logo da etec">
+        <h1>Jornal Estudantil - Costa Sul de São Sebastião</h1>
+      </div>
+
+     <nav class="nav">
+      <button class="menu-toggle" id="btn-mobile" aria-label="Abrir Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="curiosidades.html">Curiosidades</a></li>
+        <li class="dropdown">
+          <a href="eventos.html">Eventos ▾</a>
+          <ul class="submenu">
+            <li><a href="#">Etec</a></li>
+            <li><a href="#">Sebastiana</a></li>
+            <li><a href="#">Walkir</a></li>
+          </ul>
+        </li>
+        <li><a href="destaque.html">Destaque</a></li>
+        <li><a href="apresentacao.html">TCCs</a></li>
+        <li><a href="professores.html">Professores</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img src="fotos/praia4.jpg" alt="Foto da praia" class="hero-image">
+    <div class="hero-content">
+      <h1>⭐ O melhor das nossas Escolas</h1>
+      <h2>"<em>"Celebrando conquistas e reconhecendo talentos!"</em>"</h2>
+      <a href="apresentacao.html" class="cta-button">TCCs -> </a>
+    </div>
+  </section>
+
+  <main>
+    <section id="destaques">
+      <h1>⭐ Destaques da ETEC Verdescola</h1>
+      <h2><em>Celebrando conquistas e reconhecendo talentos!</em></h2>
+      <!-- Destaque Principal -->
+      <div class="destaque-principal">
+        <div class="destaque-hero">
+          <img src="copa-etec/capa-destaque.jpg" alt="copa etec">
+          <div class="destaque-hero-content">
+            <span class="badge-destaque">🏆5 finais: 1 medalha de ouro e 4 de prata </span>
+            <h2>COPA ETEC 2025 - Na quadra ou na torcida, juntos até o fim </h2>
+            <p>O evento teve como objetivo promover a integração entre as escolas, incentivar a prática esportiva e
+              fortalecer o espírito de união entre os alunos.</p>
+            <button class="btn-saiba-mais" onclick="abrirDestaque('destaque-principal-id')">Saiba Mais</button>
+          </div>
+        </div>
+      </div>
+      <!-- Grid de Destaques -->
+      <div class="grid-destaques">
+        <div class="destaque-card">
+          <img src="" alt="Imagem do destaque 1">
+          <div class="destaque-content">
+            <span class="categoria">🏷️ CATEGORIA 1</span>
+            <h3></h3>
+            <p></p>
+            <button onclick="abrirDestaque('destaque-1-id')">Leia mais</button>
+          </div>
+        </div>
+        <div class="destaque-card">
+          <img src="/placeholder.svg?height=200&width=300" alt="Imagem do destaque 2">
+          <div class="destaque-content">
+            <span class="categoria">🏷️ CATEGORIA 2</span>
+            <h3>Título do Destaque 2</h3>
+            <p>Breve descrição do destaque 2. Qual a relevância?</p>
+            <button onclick="abrirDestaque('destaque-2-id')">Leia mais</button>
+          </div>
+        </div>
+        <div class="destaque-card">
+          <img src="/placeholder.svg?height=200&width=300" alt="Imagem do destaque 3">
+          <div class="destaque-content">
+            <span class="categoria">🏷️ CATEGORIA 3</span>
+            <h3>Título do Destaque 3</h3>
+            <p>Breve descrição do destaque 3. Qual o impacto?</p>
+            <button onclick="abrirDestaque('destaque-3-id')">Leia mais</button>
+          </div>
+        </div>
+        <div class="destaque-card">
+          <img src="/placeholder.svg?height=200&width=300" alt="Imagem do destaque 4">
+          <div class="destaque-content">
+            <span class="categoria">🏷️ CATEGORIA 4</span>
+            <h3>Título do Destaque 4</h3>
+            <p>Breve descrição do destaque 4. O que foi conquistado?</p>
+            <button onclick="abrirDestaque('destaque-4-id')">Leia mais</button>
+          </div>
+        </div>
+        <div class="destaque-card">
+          <img src="/placeholder.svg?height=200&width=300" alt="Imagem do destaque 5">
+          <div class="destaque-content">
+            <span class="categoria">🏷️ CATEGORIA 5</span>
+            <h3>Título do Destaque 5</h3>
+            <p>Breve descrição do destaque 5. Quem foi reconhecido?</p>
+            <button onclick="abrirDestaque('destaque-5-id')">Leia mais</button>
+          </div>
+        </div>
+        <div class="destaque-card">
+          <img src="/placeholder.svg?height=200&width=300" alt="Imagem do destaque 6">
+          <div class="destaque-content">
+            <span class="categoria">🏷️ CATEGORIA 6</span>
+            <h3>Título do Destaque 6</h3>
+            <p>Breve descrição do destaque 6. Qual a inovação?</p>
+            <button onclick="abrirDestaque('destaque-6-id')">Leia mais</button>
+          </div>
+        </div>
+      </div>
+      <!-- Seção de Estatísticas -->
+      <div class="estatisticas">
+        <h3>📊 Números que nos orgulham</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Descrição da estatística 1</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Descrição da estatística 2</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Descrição da estatística 3</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Descrição da estatística 4</div>
+          </div>
+        </div>
+      </div>
+      <!-- Hall da Fama -->
+      <div class="hall-da-fama">
+        <h3>🌟 Hall da Fama - Ex-alunos de Sucesso</h3>
+        <div class="ex-alunos-grid">
+          <div class="ex-aluno-card">
+            <img src="/placeholder.svg?height=150&width=150" alt="Foto do ex-aluno 1">
+            <h4>Nome do Ex-aluno 1</h4>
+            <p><strong>Turma:</strong> [Ano da Turma]</p>
+            <p><strong>Atual:</strong> [Cargo e Empresa Atual]</p>
+            <p>"Depoimento inspirador do ex-aluno sobre a ETEC."</p>
+          </div>
+          <div class="ex-aluno-card">
+            <img src="/placeholder.svg?height=150&width=150" alt="Foto do ex-aluno 2">
+            <h4>Nome do Ex-aluno 2</h4>
+            <p><strong>Turma:</strong> [Ano da Turma]</p>
+            <p><strong>Atual:</strong> [Cargo e Empresa Atual]</p>
+            <p>"Depoimento inspirador do ex-aluno sobre a ETEC."</p>
+          </div>
+          <div class="ex-aluno-card">
+            <img src="/placeholder.svg?height=150&width=150" alt="Foto do ex-aluno 3">
+            <h4>Nome do Ex-aluno 3</h4>
+            <p><strong>Turma:</strong> [Ano da Turma]</p>
+            <p><strong>Atual:</strong> [Cargo e Empresa Atual]</p>
+            <p>"Depoimento inspirador do ex-aluno sobre a ETEC."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Modal COMPLETO -->
+  <div id="modal-destaque" class="modal">
+    <div class="modal-content modal-destaque-content">
+      <button class="fechar" onclick="fecharModalDestaque()" aria-label="Fechar">&times;</button>
+      <h2 id="modal-titulo"></h2>
+      <div class="carousel-modal">
+        <button class="carousel-btn" onclick="mudarCarrossel(-1)"><i class="fas fa-chevron-left"></i></button>
+        <img id="carousel-img" src="" alt="" />
+        <button class="carousel-btn" onclick="mudarCarrossel(1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="carousel-indicators" id="carousel-indicators"></div>
+      <div class="carousel-legenda" id="carousel-legenda"></div>
+      <div id="modal-texto"></div>
+    </div>
+  </div>
+  <script>
+    // Cada destaque agora tem um array de notícias completas
+    const destaquesDetalhados = {
+      'destaque-principal-id': [
+
+        {
+          titulo: 'COPA ETEC 2025 - Na quadra ou na torcida, juntos até o fim ',
+          imagem: 'copa-etec/basq-femi.jpg',
+          legenda: 'Seleção Feminina de Basquete da Etec de São Sebastião.',
+          conteudo:`<p> A equipe de basquete feminino da Etec de São Sebastião teve uma participação brilhante na primeira edição da Copa Etec
+          em Jacareí. As atletas iniciaram a competição nas quartas de final e, com muita dedicação e entrosamento, avançaram até a grande
+          final, conquistando o título de campeãs.</p>
+          <p>Mesmo sem ter detalhes de cada jogo, a campanha das meninas foi marcada pela união, garra e espírito coletivo, mostrando que o
+          trabalho em equipe é essencial para alcançar grandes conquistas. Com a vitória, a Etec de São Sebastião celebrou sua primeira
+          medalha de ouro na Copa Etec, um feito histórico para a escola e motivo de muito orgulho para atletas, torcida e toda a comunidade
+          escolar.</p>
+
+          <p><strong>📋 Elenco da Etec de São Sebastião - Basquete Feminino</strong></p>
+          <ul>
+            <li><strong>Time:</strong> Bianca Aires, Leticia Miguel, Naylla Ramalho, Lara Santos e Giovanna Larissa
+          </ul>`
+
+        },
+        {
+          titulo: 'COPA ETEC 2025 - Na quadra ou na torcida, juntos até o fim ',
+          imagem: 'copa-etec/futsal-masc.jpg',
+          legenda: 'Seleção da Etec de São Sebastião.',
+          conteudo: `
+        <p>A equipe de futsal da Etec de São Sebastião fez história na primeira edição da Copa Etec em Jacareí.
+        Com raça, união e determinação, os atletas chegaram à grande final e conquistaram o vice-campeonato em
+        uma campanha memorável. Confira como foram os jogos:</p>
+        
+        <p><strong>Oitavas de Final</strong> <br>
+        Classificação garantida: vitória por W.O contra Sumaré</p>
+
+        <p>Na estreia, a equipe avançou sem precisar entrar em quadra. O adversário, a Etec de Sumaré, não compareceu,
+        resultando em um W.O. favorável. O time de São Sebastião aproveitou a folga para focar na preparação para os
+        próximos desafios.</p>
+
+        <p><strong>Quartas de Final</strong> <br>
+        Vitória emocionante: São Sebastião 5 x 3 São José do Rio Pardo
+        Nas quartas, o futsal sebastianense brilhou. Em um jogo intenso, venceu a Etec de São José do Rio Pardo por
+        5 a 3. A partida foi marcada pela garra e pelo jogo coletivo, que garantiram a classificação para a semifinal.</p>
+
+        <p><strong>Semifinal</strong> <br>
+        Drama e emoção: vaga na final conquistada nos pênaltis contra Mogi
+        A semifinal foi eletrizante. Contra a forte equipe de Mogi das Cruzes, o tempo normal terminou em 3 a 3. A
+        decisão foi para os pênaltis, onde São Sebastião mostrou nervos de aço, vencendo por 3 a 2 nas cobranças e
+        garantindo vaga na grande final.</p>
+        
+        <p><strong>Final</strong> <br>
+        Em um grande jogo, São Sebastião fica com o vice após disputa de pênaltis contra Ourinhos
+        A decisão contra Ourinhos foi um espetáculo. No tempo normal, mais um empate em 3 a 3, levando a decisão para
+        os pênaltis. Desta vez, a sorte não sorriu para São Sebastião, que perdeu por 3 a 2 nas cobranças. Mesmo com o
+        resultado, a equipe saiu ovacionada, encerrando sua participação com uma campanha histórica e o título de
+        vice-campeã da Copa Etec Jacareí.</p>
+
+        <p><strong>📋 Elenco da Etec de São Sebastião - Futsal</strong></p>
+        <ul>
+          <li><strong>Capitão:</strong> Kaká (ala)</li>
+          <li><strong>Time Titular:</strong> João Topete (goleiro), Willbert (fixo), Kaká (ala), Pires (ala), Luiz (pivô)</li>
+          <li><strong>Reservas:</strong> Daniel, Neto, Mineiro, Gui Negão, Enzo e Cauê Lobo</li>
+          <li><strong>Técnico:</strong> Carlos</li>
+        </ul>
+        <br>
+        <p>A campanha mostrou o espírito de união da equipe: titulares firmes em quadra, reservas prontos para
+        contribuir nos momentos decisivos e a liderança do técnico Carlos, que guiou o grupo até a final.</p>
+      `
+        },
+        {
+          titulo: 'De goleada à grande final: Futsal Feminino da Etec de São Sebastião garante o vice na Copa Etec',
+          imagem: 'copa-etec/futsal-femi.jpg',
+          legenda: 'Seleção Feminina da etec de São Sebastião.',
+          conteudo: `A equipe de futsal feminino da Etec de São Sebastião fez bonito na Copa Etec em Jacareí. Com muito talento, raça e espírito
+      coletivo, as atletas chegaram até a grande final e conquistaram o vice-campeonato, marcando a história da escola na competição.
+      Confira como foram os jogos:</p>
+      
+      <p><strong>Quartas de Final</strong><br>
+      <strogn>Estreia com goleada sobre Bragança Paulista: 5 x 0 </strogn><br>
+      O primeiro desafio veio já nas quartas de final, contra a Etec de Bragança Paulista. O time sebastianense mostrou superioridade do
+      início ao fim, vencendo por 5 a 0. As jogadas coletivas e a sintonia entre defesa e ataque foram os destaques da partida.</p>
+
+      <p><strong>Semifinal</strong><br>
+      <strong>Vitória firme contra Atibaia: 4 x 2</strong><br>
+      Na semifinal, contra a Etec de Atibaia, a equipe mostrou maturidade. Mesmo enfrentando um adversário competitivo, o futsal de São
+      Sebastião soube controlar a partida e venceu por 4 a 2. Além da força ofensiva, a postura defensiva foi determinante, garantindo
+      a classificação para a grande decisão.</p>
+
+      <p><strong>Final</strong><br>
+      <strong>Duelo equilibrado contra Poá termina em vice-campeonato</strong><br>
+      Na final, diante da Etec de Poá, a equipe acabou sofrendo um gol logo nos primeiros minutos. Apesar da pressão inicial, as meninas de
+      São Sebastião se reorganizaram, buscaram o jogo e chegaram a reagir, mas já era tarde. O placar final foi de 3 a 2 para Poá. Mesmo com
+      a derrota, o time demonstrou coragem e determinação, sendo muito aplaudido pela torcida presente.</p>
+
+      <p><strong>📋 Elenco da Etec de São Sebastião - Futsal Feminino</strong></p>
+        <ul>
+          <li><strong>Capitã:</strong> Ticiane (fixo)
+          <li><strong>Time Titular:</strong> Ticiane (fixo), Thamyres (ala direita), Gisele (pivô), Alice (ala esquerda), Maria (goleira)
+          <li><strong>Reservas:</strong> Michael, Lara, Bianca e Emily
+        </ul>
+        <br>
+        <p>A campanha do futsal feminino mostrou a força do grupo: titulares entrosadas, reservas sempre prontas para contribuir e a liderança da capitã Ticiane, que comandou a equipe dentro de quadra. O vice-campeonato foi o reconhecimento de um time unido, guerreiro e que representou a Etec de São Sebastião com orgulho.</p>
+        `
+        },
+        {
+          titulo: 'Etec de São Sebastião arrasa no palco com espetáculo inspirado em Aladdin',
+          imagem: 'copa-etec/danca.jpg',
+          legenda: 'Dançarinos da Etec de São Sebastião.',
+          conteudo: `<p>O grupo de dança da Etec de São Sebastião trouxe muita energia, talento e inovação para a Copa Etec em Jacareí. As
+          apresentações chamaram a atenção não apenas pela técnica, mas também pela criatividade e pelo envolvimento com o público. As músicas
+          escolhidas foram “Arabian Nights” e “Friend Like Me”, temas do clássico Aladdin, e a equipe se fantasiou no estilo das canções, dando
+          vida às coreografias e trazendo um espetáculo visual incrível.</p>
+
+          <p>O diferencial do grupo foi a coreografia inovadora, que uniu movimentos sincronizados, ritmo e interação com a plateia, mostrando
+          que dança é muito mais do que técnica: é expressão, emoção e criatividade. A apresentação do time da Etec de São Sebastião se destacou
+          entre as mais aplaudidas e comentadas do evento, reforçando o talento artístico dos alunos da escola.</p>
+
+          <p><strong>📋 Integrantes do grupo de dança - Etec de São Sebastião</strong></p>
+          <ul>
+            <li>Mayra -2MAI
+            <li>Clara Luiza - 2MAI
+            <li>Geovana - 2MAI
+            <li>Samuel - 2MAI
+            <li>Emanuel - 3MKT
+            <li>Heitor - 3MKT
+            <li>Eliza - 3MKT
+            <li>Arthur - 3MKT
+            <li>Maria Eduarda - 1MAI
+            <li>Brenno - 1MAI
+            <li>Ana Júlia - 1MAI
+            <li>Gabi - 1ADI
+            <li>Ailana - 1ADI
+            <li>Ayumi - 1ADI
+            <li>Ana Laura - 1NUTRI
+            <li>Guilherme - 1NUTRI
+            <li>Kaunne - 1NUTRI SEDE
+          </ul>
+          <br>
+          <p>O grupo da Etec mostrou que talento, inovação e trabalho em equipe fazem a diferença, deixando uma marca memorável na Copa Etec Jacareí.</p>`
+
+        },
+        {
+          titulo: 'Copa Etec Jacareí - Vôlei Masculino da Etec de São Sebastião conquista o vice-campeonato',
+          imagem: 'copa-etec/volei-masc.jpg',
+          legenda: 'Seleção masculina de Vôlei da Etec de São Sebastião.',
+          conteudo:`<p>A equipe masculina de vôlei da Etec de São Sebastião brilhou na Copa Etec em Jacareí. Com muita garra e união, os atletas
+          chegaram à grande final e conquistaram a medalha de prata, coroando uma campanha de destaque na competição. Confira como foram os
+          jogos:</p>
+
+          <p><strong>Oitavas de Final<br>
+          Vitória convincente sobre Serrana: 2 x 0</strong><br>
+          Na estreia, a equipe mostrou força e entrosamento, vencendo a Etec de Serrana por 2 sets a 0. Os destaques da partida foram os
+          camisas 5 e 3, que brilharam com saques potentes e cortes decisivos.</p>
+          
+          <p><strong>Quartas de Final<br>
+          Controle de jogo contra Itaqua: 2 x 0</strong><br>
+          Nas quartas de final, o adversário foi a Etec de Itaquaquecetuba. O destaque ficou por conta do levantador da equipe, que
+          distribuiu as bolas com precisão, deixando os companheiros em ótimas condições de ataque. Resultado: vitória tranquila por 2 a 0.</p>
+
+          <p><strong>Semifinal<br>
+          Superação contra Bragança Paulista: 2 x 1 </strong><br>
+          Na semifinal, contra a Etec de Bragança Paulista, a equipe sebastianense contou com uma atuação coletiva brilhante, envolvendo tanto
+          titulares quanto reservas. Com a torcida empurrando desde o início, o time mostrou força mental e venceu por 2 sets a 1, garantindo
+          vaga na grande decisão.</p>
+
+          <p><strong>Final<br>
+          Batalha contra os donos da casa: derrota para Jacareí</strong><br>
+          Na grande final, a equipe enfrentou os anfitriões, a Etec de Jacareí. O jogo foi equilibrado, com São Sebastião chegando a ficar à
+          frente em alguns momentos, mas no fim os donos da casa levaram a melhor. Apesar da derrota, o time mostrou raça e saiu ovacionado
+          pela torcida, assegurando a medalha de prata.</p>
+
+          <p><strong>📋 Elenco da Etec de São Sebastião - Vôlei Masculino</strong><p>
+          <ul>
+            <li><strong>Time Titular:</strong> Lucas, José, Daniel Cebola, Paulo, André, Guilherme e Deyvid
+            <li><strong>Reservas:</strong> Felipe, Naka, Fidelis, Gabriel, Daniel Quirino e Bruno
+            <li><strong>Técnico:</strong> Pedro Santana e Carlos
+          </ul>
+          <br>
+          <p>A campanha demonstrou o espírito de união do grupo: titulares firmes em quadra, reservas prontos para entrar e fazer a diferença, além da força da torcida que apoiou até o fim. O vice-campeonato reforça o protagonismo do vôlei masculino da Etec de São Sebastião na Copa Etec Jacareí. </p>`
+        },
+        {
+          titulo: 'Copa Etec Jacareí - Garra e União levam o Vôlei Feminino da Etec de São Sebastião ao Vice-Campeonato',
+          imagem: 'copa-etec/volei-femi.jpg',
+          legenda: 'Seleção Feminina de Vôlei da Etec de São Sebastião.',
+          conteudo: `<p>A equipe feminina de vôlei da Etec de São Sebastião fez bonito na Copa Etec em Jacareí. Com garra, união e muita
+          determinação, as atletas chegaram à grande final e conquistaram o vice-campeonato, em uma campanha que ficará marcada na história
+          da escola. Confira como foram os jogos:</p>
+         
+          <p><strong>Oitavas de Final<br>
+          Classificação garantida: vitória por W.O contra Ourinhos<br></strong>
+          Na estreia, a equipe avançou sem precisar entrar em quadra. O adversário, a Etec de Ourinhos, não compareceu, resultando em um W.O.
+          favorável.</p>
+
+          <p><strong>Quartas de Final<br>
+          Mais uma vitória por W.O contra Serrana</strong><br>
+          Assim como na primeira fase, as meninas garantiram vaga na semifinal sem jogar, com o W.O diante da Etec de Serrana.</p>
+
+          <p><strong>Semifinal<br>
+          Emoção e superação: vitória sobre Caçapava</strong><br>
+          O primeiro grande desafio veio contra a Etec de Caçapava. A equipe sebastianense venceu o primeiro set, mas o adversário reagiu e
+          empatou a partida no segundo. No tie-break, com muita raça e apoio da torcida, São Sebastião levou a melhor e garantiu vaga na final.</p>
+          
+          <p><strong>Final<br>
+          Disputa intensa contra Mogi das Cruzes termina em vice-campeonato</strong><br>
+          Na decisão, as meninas enfrentaram a forte equipe de Mogi das Cruzes, comandada pela capitã número 9, que se destacou na partida. Apesar
+          da luta e da entrega até o último ponto, a vitória ficou com Mogi. Mesmo assim, as atletas da Etec de São Sebastião deixaram a quadra de
+          cabeça erguida, sendo aplaudidas pela torcida.</p>
+
+          <p><strong>A voz da capitã: gratidão e união</strong><br>
+          Para a capitã Ana Borges, do 3º ano, a participação foi inesquecível:<br>
+          “Creio que por ser a primeira copa, foi excelente! A experiência foi uma coisa muito boa pra nós, então eu como 3º ano fiquei extremamente grata e realizada de viver isso antes de me formar”, destacou.</p>
+
+          <p><strong>Ela também ressaltou os momentos que mais marcaram:</strong><br>
+          “Todos os momentos foram extremamente marcantes, porém quando a escola se unia pra torcer uns pelos outros, isso não tem preço. Já do torneio em si, acho que a integração e a confiança que depositamos uns aos outros para que tudo acontecesse e corresse bem.”</p>
+
+         <p><strong> Sobre a responsabilidade de representar a Etec e carregar a faixa de capitã, Ana foi enfática:</strong><br>
+         “Foi um sentimento de alegria e medo por ter o peso de capitã e sempre elevar as meninas pra mostrarem que elas podem. Contudo, acho que o maior sentimento foi a gratidão! A Etec tem grande significado no meu coração, mesmo sendo no JEESP ou na Copa Etec, representar essa escola praticando aquilo que eu amo, não tem preço!”</p>
+
+          <p><strong>📋 Elenco da Etec de São Sebastião - Vôlei Feminino</strong></p>
+          <ul>
+            <li><strong>Capitã:</strong> Borges
+            <li><strong>Time Titular:</strong> Borges (C), Lívia, Sophia, Lina, Madu, Bia Lazzaro e Brenda
+            <li><strong>Reservas:</strong> Pertusi e Maedu
+            <li><strong>Técnico:</strong> Pedro Santana e Carlos
+          </ul>
+          <br>
+          <p>A campanha mostrou o espírito guerreiro da equipe: titulares firmes em quadra, reservas sempre prontas para contribuir e a
+          liderança do técnico Carlos, que guiou o grupo até a final. O vice-campeonato simboliza a força, a união e a garra do vôlei
+          feminino da nossa Etec.</p>
+          `
+        },
+        {
+          titulo: 'Sob o sol e na estreia: Sophia e Kelly encaram campeãs no vôlei de praia',
+          imagem: 'copa-etec/volei-praia-fem.jpg',
+          legenda: 'Dupla feminina de Vôlei de Praia da Etec de São Sebastião.',
+          conteudo:`<p>A dupla Sophia e Kelly representou a Etec de São Sebastião no vôlei de praia feminino da Copa Etec em Jacareí. A estreia
+          foi contra a forte equipe de Caçapava, que viria a se consagrar campeã da competição. Mesmo com muita disposição, as sebastianenses
+          acabaram derrotadas por 2 sets a 0.</p>
+
+          <p>O desafio foi ainda maior devido ao forte calor do dia, que exigiu muito das atletas, além do fato de ter sido a primeira vez que
+          a dupla jogou junta em um torneio oficial.</p>
+
+          <p>Apesar da eliminação precoce, Sophia e Kelly mostraram espírito de luta, determinação e representaram a Etec com orgulho. A
+          participação delas reforça a importância da união e da coragem de enfrentar grandes desafios na Copa Etec Jacareí.</p>`
+           
+        },
+         {
+          titulo: 'Copa Etec Jacarei - Vôlei de Praia Maculino',
+          imagem: 'copa-etec/volei-praia-masc.jpg',
+          legenda: 'Dupla Masculina de Vôlei de Praia da Etec de São Sebastião.',
+          conteudo:`<p> A dupla Arthur Costa Neves e Felipe Opata representou a Etec de São Sebastião no vôlei de praia da Copa Etec em Jacareí
+          e fez bonito na competição. Com muita dedicação e espírito esportivo, os dois atletas chegaram até a semifinal, garantindo um lugar
+          entre as quatro melhores duplas do torneio.</p>
+          <p> Na disputa pelo terceiro lugar, Arthur e Felipe enfrentaram a equipe da Etec de Caçapava, mas acabaram derrotados, encerrando a
+          participação em quarto lugar.</p>
+          <p> Mesmo sem a medalha, a dupla conquistou o reconhecimento pela garra e pela determinação em quadra. Arthur e Felipe representaram
+          a Etec de São Sebastião com orgulho e mostraram que, mais do que o resultado, o esporte é feito de dedicação, aprendizado e espírito
+          de equipe.</p>`
+         },
+        {
+          titulo: 'Copa Etec Jacareí - Garra e União levam o Vôlei Feminino da Etec de São Sebastião ao Vice-Campeonato',
+          imagem: 'copa-etec/basq-masc.jpg',
+          legenda: 'Seleção Masculina de Basquete da Etec de São Sebastião.',
+          conteudo: `<p>O time masculino de basquete da Etec de São Sebastião também esteve presente na primeira edição da Copa Etec em Jacareí. Mesmo sem muitos dias de preparação, os atletas entraram em quadra com determinação e vontade de defender as cores da escola.</p>
+          <p>A participação foi marcada pelo espírito de união, pela disciplina e pela coragem de enfrentar adversários fortes. Independentemente dos resultados, o grupo mostrou garra e representou com orgulho a Etec de São Sebastião, reforçando a importância da competição como espaço de aprendizado e integração entre os alunos.</p>
+          <p>Mais do que vitórias ou derrotas, a presença do basquete masculino simboliza o compromisso com o esporte e o crescimento coletivo, deixando claro que a primeira Copa Etec já faz parte da história da nossa escola.</p>
+          `
+        },
+
+      ],
+    
+    'destaque-1-id': [
+      {
+        titulo: 'Alunos da Etec acompanham <mark>plebiscito</mark> na Barra do Sahy',
+        imagem: 'fts-mkt/capa3.jpg',
+        legenda: 'Alunos no início da atividade de campo.',
+        conteudo: ''
+      },
+    ],
+    
+      'destaque-2-id':[
+        {
+          titulo: 'Título do Destaque 2',
+          imagem: '/placeholder.svg?height=400&width=600',
+          legenda: 'Imagem ilustrativa do destaque 2.',
+          conteudo: ``
+        },
+      ],
+      
+      'destaque-3-id':[
+        {
+          titulo: 'Título do Destaque 3',
+          imagem: '/placeholder.svg?height=400&width=600',
+          legenda: 'Imagem ilustrativa do destaque 3.',
+          conteudo: `< p > Breve descrição do destaque 3. Qual o<mark>impacto</mark>?</p > `
+        },
+      ],
+
+      'destaque-4-id':[
+        {
+          titulo: 'Título do Destaque 4',
+          imagem: '/placeholder.svg?height=400&width=600',
+          legenda: 'Imagem ilustrativa do destaque 4.',
+          conteudo: `< p > Breve descrição do destaque 4. O que foi < mark > conquistado</mark >?</p > `
+        },
+      ],
+      'destaque-5-id': [
+        {
+          titulo: 'Título do Destaque 5',
+          imagem: '/placeholder.svg?height=400&width=600',
+          legenda: 'Imagem ilustrativa do destaque 5.',
+          conteudo: `< p > Breve descrição do destaque 5. Quem foi < mark > reconhecido</mark >?</p > `
+        },
+      ],
+      'destaque-6-id': [
+        {
+          titulo: 'Título do Destaque 6',
+          imagem: '/placeholder.svg?height=400&width=600',
+          legenda: 'Imagem ilustrativa do destaque 6.',
+          conteudo: `< p > Breve descrição do destaque 6. Qual a < mark > inovação</mark >?</p > `
+        },
+      ],
+    };
+
+  let currentCarouselIdx = 0;
+  let currentCarouselNoticias = [];
+  function abrirDestaque(id) {
+    currentCarouselNoticias = destaquesDetalhados[id] || [];
+    currentCarouselIdx = 0;
+    renderCarousel();
+    document.getElementById('modal-destaque').classList.add('open');
+  }
+  function fecharModalDestaque() {
+    document.getElementById('modal-destaque').classList.remove('open');
+  }
+  function mudarCarrossel(delta) {
+    if (!currentCarouselNoticias.length) return;
+    currentCarouselIdx = (currentCarouselIdx + delta + currentCarouselNoticias.length) % currentCarouselNoticias.length;
+    renderCarousel();
+  }
+  function irParaCarrossel(idx) {
+    currentCarouselIdx = idx;
+    renderCarousel();
+  }
+  function renderCarousel() {
+    const noticia = currentCarouselNoticias[currentCarouselIdx];
+    document.getElementById('modal-titulo').innerHTML = noticia.titulo;
+    document.getElementById('carousel-img').src = noticia.imagem;
+    document.getElementById('carousel-legenda').innerHTML = noticia.legenda;
+    document.getElementById('modal-texto').innerHTML = noticia.conteudo;
+
+    // Dots - ATENÇÃO: tire QUALQUER espaço dentro do <span>
+    const dots = currentCarouselNoticias.map((_, i) =>
+      `<span class="carousel-dot${i===currentCarouselIdx?' active':''}" onclick="irParaCarrossel(${i})"></span>`
+    ).join('');
+    document.getElementById('carousel-indicators').innerHTML = dots;
+  }
+  window.onclick = (e) => {
+    if (e.target === document.getElementById('modal-destaque')) fecharModalDestaque();
+  };
+  window.mudarCarrossel = mudarCarrossel;
+  window.irParaCarrossel = irParaCarrossel;
+  window.abrirDestaque = abrirDestaque;
+  window.fecharModalDestaque = fecharModalDestaque;
+
+  function renderCarousel() {
+  const noticia = currentCarouselNoticias[currentCarouselIdx];
+  document.getElementById('modal-titulo').innerHTML = noticia.titulo;
+  document.getElementById('carousel-img').src = noticia.imagem;
+  document.getElementById('carousel-legenda').innerHTML = noticia.legenda;
+  document.getElementById('modal-texto').innerHTML = noticia.conteudo;
+
+  // Esconde/mostra setas e dots se só tiver um item
+  const btns = document.querySelectorAll('.carousel-btn');
+  const indicators = document.getElementById('carousel-indicators');
+  if (currentCarouselNoticias.length <= 1) {
+    btns.forEach(btn => btn.style.display = "none");
+    indicators.style.display = "none";
+  } else {
+    btns.forEach(btn => btn.style.display = "");
+    indicators.style.display = "";
+  }
+
+  // Dots
+  const dots = currentCarouselNoticias.map((_, i) =>
+    `<span class="carousel-dot${i===currentCarouselIdx?' active':''}" onclick="irParaCarrossel(${i})"></span>`
+  ).join('');
+  indicators.innerHTML = dots;
+}
+  </script>
+  <footer>
+    <div class="rodape-container">
+      <div class="rodape-coluna">
+        <h4> 📞 Contato</h4>
+        <p> email: estudantiljornal993@gmail.com<br></p>
+      </div>
+      <div class="rodape-coluna">
+        <h4>📱 Redes Sociais</h4>
+        <ul>
+          <li><a href="https://instagram.com/Je_Costasul ">Jornal Estudantil Costa Sul </a></li>
+          <li><a href="https://instagram.com/etec.cdverdescola">ETEC - Extensão Verdescola </a></li>
+          <li><a href="https://instagram.com/institutoconservacaocosteira">ICC - Instituto Conservação Costeira</a>
+        </li>
+      </div>
+      <div class="rodape-coluna">
+        <h4>🔗 Navegue</h4>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="curiosidades.html">Curiosidade</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="destaque.html">Destaque</a></li>
+          <li><a href="apresentacao.html">TCC</a></li>
+        </ul>
+      </div>
+      <div class="rodape-coluna">
+        <h4>🔗 Sites</h4>
+        <ul>
+          <li><a href="https://nsa.cps.sp.gov.br"> NSA </a></li>
+          <li><a href="https://www.canva.com"> Canva</a></li>
+          <li><a href="https://www.microsoft.com"> Microsoft Teams</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-final">
+      <p>&copy; 2026 Jornal Estudantil - Costa Sul de São Sebastião | Desenvolvido por egressos de Agênciamento de Viagens e Administração</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
